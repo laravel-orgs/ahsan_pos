@@ -23,7 +23,7 @@ class CustomerController extends Controller
         }
 
         return view('customers.index', [
-            'customers' => Customer::filter(request(['search']))->sortable()->paginate($row)->appends(request()->query()),
+            'customers' => Customer::orderBy('id', 'desc')->filter(request(['search']))->sortable()->paginate($row)->appends(request()->query()),
         ]);
     }
 
@@ -41,17 +41,17 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'photo' => 'image|file|max:1024',
+            // 'photo' => 'image|file|max:1024',
             'name' => 'required|string|max:50',
-            'email' => 'required|email|max:50|unique:customers,email',
+            'email' => 'nullable|email|max:50|unique:customers,email',
             'phone' => 'required|string|max:15|unique:customers,phone',
-            'shopname' => 'required|string|max:50',
-            'account_holder' => 'max:50',
-            'account_number' => 'max:25',
-            'bank_name' => 'max:25',
-            'bank_branch' => 'max:50',
-            'city' => 'required|string|max:50',
-            'address' => 'required|string|max:100',
+            // 'shopname' => 'required|string|max:50',
+            // 'account_holder' => 'max:50',
+            // 'account_number' => 'max:25',
+            // 'bank_name' => 'max:25',
+            // 'bank_branch' => 'max:50',
+            // 'city' => 'required|string|max:50',
+            'address' => 'nullable|string|max:200',
         ];
 
         $validatedData = $request->validate($rules);
@@ -59,13 +59,13 @@ class CustomerController extends Controller
         /**
          * Handle upload image with Storage.
          */
-        if ($file = $request->file('photo')) {
-            $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
-            $path = 'public/customers/';
+        // if ($file = $request->file('photo')) {
+        //     $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
+        //     $path = 'public/customers/';
 
-            $file->storeAs($path, $fileName);
-            $validatedData['photo'] = $fileName;
-        }
+        //     $file->storeAs($path, $fileName);
+        //     $validatedData['photo'] = $fileName;
+        // }
 
         Customer::create($validatedData);
 
@@ -98,17 +98,17 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         $rules = [
-            'photo' => 'image|file|max:1024',
+            // 'photo' => 'image|file|max:1024',
             'name' => 'required|string|max:50',
-            'email' => 'required|email|max:50|unique:customers,email,'.$customer->id,
-            'phone' => 'required|string|max:15|unique:customers,phone,'.$customer->id,
-            'shopname' => 'required|string|max:50',
-            'account_holder' => 'max:50',
-            'account_number' => 'max:25',
-            'bank_name' => 'max:25',
-            'bank_branch' => 'max:50',
-            'city' => 'required|string|max:50',
-            'address' => 'required|string|max:100',
+            'email' => 'nullable|email|max:50|unique:customers,email,' . $customer->id,
+            'phone' => 'required|string|max:15|unique:customers,phone,' . $customer->id,
+            // 'shopname' => 'required|string|max:50',
+            // 'account_holder' => 'max:50',
+            // 'account_number' => 'max:25',
+            // 'bank_name' => 'max:25',
+            // 'bank_branch' => 'max:50',
+            // 'city' => 'required|string|max:50',
+            'address' => 'nullable|string|max:100',
         ];
 
         $validatedData = $request->validate($rules);
@@ -117,13 +117,13 @@ class CustomerController extends Controller
          * Handle upload image with Storage.
          */
         if ($file = $request->file('photo')) {
-            $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
+            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
             $path = 'public/customers/';
 
             /**
              * Delete photo if exists.
              */
-            if($customer->photo){
+            if ($customer->photo) {
                 Storage::delete($path . $customer->photo);
             }
 
@@ -144,7 +144,7 @@ class CustomerController extends Controller
         /**
          * Delete photo if exists.
          */
-        if($customer->photo){
+        if ($customer->photo) {
             Storage::delete('public/customers/' . $customer->photo);
         }
 

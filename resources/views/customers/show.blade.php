@@ -20,14 +20,14 @@
             <div class="card card-block card-stretch card-height mb-5">
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-3">
-                        <div class="profile-img position-relative">
+                        {{-- <div class="profile-img position-relative">
                             <img src="{{ $customer->photo ? asset('storage/customers/' . $customer->photo) : asset('assets/images/user/1.png') }}" class="img-fluid rounded avatar-110" alt="profile-image">
-                        </div>
+                        </div> --}}
                         <div class="ml-3">
-                            <h4 class="mb-1">{{ $customer->name }}</h4>
-                            <p class="mb-2">{{ $customer->shopname }}</p>
-                            <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary font-size-14">Edit</a>
-                            <a href="{{ route('customers.index') }}" class="btn btn-danger font-size-14">Back</a>
+                            <h4 class="mb-2">{{ $customer->name }}</h4>
+                            {{-- <p class="mb-2">{{ $customer->shopname }}</p> --}}
+                            <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary font-size-14 ">Edit</a>
+                            <a href="{{ route('customers.index') }}" class="btn btn-danger font-size-14 ">Back</a>
                         </div>
                     </div>
                     <ul class="list-inline p-0 m-0">
@@ -48,13 +48,13 @@
                             </div>
                         </li>
                         <li class="mb-2">
-                            <div class="d-flex align-items-center">
+                            {{-- <div class="d-flex align-items-center">
                                 <svg class="svg-icon mr-3" height="16" width="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                                 <p class="mb-0">{{ $customer->city ? $customer->city : 'Unknown' }}</p>
-                            </div>
+                            </div> --}}
                         </li>
                     </ul>
                 </div>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="col-lg-12">
+                        {{-- <li class="col-lg-12">
                             <div class="form-group row">
                                 <div class="col-sm-3 col-4">
                                     <label class="col-form-label">Shop Name</label>
@@ -111,8 +111,8 @@
                                     <input type="text" class="form-control bg-white" value="{{ $customer->shopname }}" readonly>
                                 </div>
                             </div>
-                        </li>
-                        <li class="col-lg-12">
+                        </li> --}}
+                        {{-- <li class="col-lg-12">
                             <div class="form-group row">
                                 <div class="col-sm-3 col-4">
                                     <label class="col-form-label">Account Holder</label>
@@ -161,7 +161,7 @@
                                     <input type="text" class="form-control bg-white" value="{{ $customer->city }}" readonly>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="col-lg-12">
                             <div class="form-group row">
                                 <div class="col-sm-3 col-4">

@@ -62,15 +62,15 @@
                             <label>Category</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->category->name }}" readonly>
                         </div>
-                        <div class="form-group col-md-6">
+                        {{-- <div class="form-group col-md-6">
                             <label>Supplier</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->supplier->name }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
                             <label>Product Garage</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->product_garage }}" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
+                        </div> --}}
+                        {{-- <div class="form-group col-md-6">
                             <label>Product Store</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->product_store }}" readonly>
                         </div>
@@ -81,11 +81,11 @@
                         <div class="form-group col-md-6">
                             <label>Expire Date</label>
                             <input class="form-control bg-white" id="expire_date" value="{{ $product->expire_date }}" readonly />
-                        </div>
-                        <div class="form-group col-md-6">
+                        </div> --}}
+                        {{-- <div class="form-group col-md-6">
                             <label>Buying Price</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->buying_price }}" readonly>
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-6">
                             <label>Selling Price</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->selling_price }}" readonly>

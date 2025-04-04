@@ -13,15 +13,16 @@ class Product extends Model
     protected $fillable = [
         'product_name',
         'category_id',
-        'supplier_id',
+        // 'supplier_id',
         'product_code',
-        'product_garage',
+        // 'product_garage',
         'product_image',
-        'product_store',
-        'buying_date',
-        'expire_date',
-        'buying_price',
+        // 'product_store',
+        // 'buying_date',
+        // 'expire_date',
+        // 'buying_price',
         'selling_price',
+        'status'
     ];
 
     public $sortable = [
@@ -35,16 +36,16 @@ class Product extends Model
 
     protected $with = [
         'category',
-        'supplier'
+        // 'supplier'
     ];
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function supplier(){
-        return $this->belongsTo(Supplier::class, 'supplier_id');
-    }
+    // public function supplier(){
+    //     return $this->belongsTo(Supplier::class, 'supplier_id');
+    // }
 
     public function scopeFilter($query, array $filters)
     {

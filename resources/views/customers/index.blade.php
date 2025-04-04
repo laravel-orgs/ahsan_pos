@@ -61,11 +61,11 @@
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
                             <th>No.</th>
-                            <th>Photo</th>
+                            {{-- <th>Photo</th> --}}
                             <th>@sortablelink('name')</th>
                             <th>@sortablelink('email')</th>
                             <th>@sortablelink('phone')</th>
-                            <th>@sortablelink('shopname')</th>
+                            {{-- <th>@sortablelink('shopname')</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -73,13 +73,13 @@
                         @foreach ($customers as $customer)
                         <tr>
                             <td>{{ (($customers->currentPage() * 10) - 10) + $loop->iteration  }}</td>
-                            <td>
+                            {{-- <td>
                                 <img class="avatar-60 rounded" src="{{ $customer->photo ? asset('storage/customers/'.$customer->photo) : asset('assets/images/user/1.png') }}">
-                            </td>
+                            </td> --}}
                             <td>{{ $customer->name }}</td>
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->phone }}</td>
-                            <td>{{ $customer->shopname }}</td>
+                            {{-- <td>{{ $customer->shopname }}</td> --}}
                             <td>
                                 <div class="d-flex align-items-center list-action">
                                     <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
