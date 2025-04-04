@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="ttl-amt py-2 px-3 d-flex justify-content-between align-items-center">
                                     <h6>Total</h6>
-                                    <h3 class="text-primary font-weight-700">${{ Cart::total() }}</h3>
+                                    <h3 class="text-primary font-weight-700">Rs {{ Cart::total() }}</h3>
                                 </div>
                             </div>
                         </div>

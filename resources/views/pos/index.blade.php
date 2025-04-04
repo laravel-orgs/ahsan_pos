@@ -59,13 +59,13 @@
                     <p class="h4 text-primary">Quantity: {{ Cart::count() }}</p>
                 </div>
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">Subtotal: {{ Cart::subtotal() }}</p>
+                    <p class="h4 text-primary">Subtotal: Rs {{ Cart::subtotal() }}</p>
                 </div>
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">Vat: {{ Cart::tax() }}</p>
+                    {{-- <p class="h4 text-primary">Vat: {{ Cart::tax() }}</p> --}}
                 </div>
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">Total: {{ Cart::total() }}</p>
+                    <p class="h4 text-primary">Total: Rs {{ Cart::total() }}</p>
                 </div>
             </div>
 
@@ -134,8 +134,8 @@
                                 <tr class="ligth ligth-data">
                                     <th>No.</th>
                                     <th>Photo</th>
-                                    <th>@sortablelink('product_name', 'name')</th>
-                                    <th>@sortablelink('selling_price', 'price')</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

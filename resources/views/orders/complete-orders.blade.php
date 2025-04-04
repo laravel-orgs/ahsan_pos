@@ -58,10 +58,10 @@
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
                             <th>No.</th>
-                            <th>Invoice No</th>
-                            <th>@sortablelink('customer.name', 'name')</th>
-                            <th>@sortablelink('order_date', 'order date')</th>
-                            <th>@sortablelink('pay')</th>
+                            <th>Order No</th>
+                            <th>Customer Name</th>
+                            <th>Order Date</th>
+                            <th>Pay</th>
                             <th>Payment</th>
                             <th>Status</th>
                             <th>Action</th>

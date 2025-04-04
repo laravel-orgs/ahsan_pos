@@ -82,18 +82,19 @@ class OrderController extends Controller
             'table' => 'orders',
             'field' => 'invoice_no',
             'length' => 10,
-            'prefix' => 'INV-'
+            'prefix' => 'ORD-'
         ]);
+        // dd(Cart::total());
 
         $validatedData = $request->validate($rules);
         $validatedData['order_date'] = Carbon::now()->format('Y-m-d');
         $validatedData['order_status'] = 'pending';
         $validatedData['total_products'] = Cart::count();
-        $validatedData['sub_total'] = Cart::subtotal();
-        $validatedData['vat'] = Cart::tax();
+        $validatedData['sub_total'] = floatval(Cart::subtotal());
+        $validatedData['vat'] = floatval(Cart::tax());
         $validatedData['invoice_no'] = $invoice_no;
-        $validatedData['total'] = Cart::total();
-        $validatedData['due'] = Cart::total() - $validatedData['pay'];
+        $validatedData['total'] = floatval(Cart::total());
+        $validatedData['due'] = floatval(Cart::total()) - $validatedData['pay'];
         $validatedData['created_at'] = Carbon::now();
 
         $order_id = Order::insertGetId($validatedData);
@@ -126,9 +127,9 @@ class OrderController extends Controller
     {
         $order = Order::where('id', $order_id)->first();
         $orderDetails = OrderDetails::with('product')
-                        ->where('order_id', $order_id)
-                        ->orderBy('id', 'DESC')
-                        ->get();
+            ->where('order_id', $order_id)
+            ->orderBy('id', 'DESC')
+            ->get();
 
         return view('orders.details-order', [
             'order' => $order,
@@ -148,7 +149,7 @@ class OrderController extends Controller
 
         foreach ($products as $product) {
             Product::where('id', $product->product_id)
-                    ->update(['product_store' => DB::raw('product_store-'.$product->quantity)]);
+                ->update(['product_store' => DB::raw('product_store-' . $product->quantity)]);
         }
 
         Order::findOrFail($order_id)->update(['order_status' => 'complete']);
@@ -160,9 +161,9 @@ class OrderController extends Controller
     {
         $order = Order::where('id', $order_id)->first();
         $orderDetails = OrderDetails::with('product')
-                        ->where('order_id', $order_id)
-                        ->orderBy('id', 'DESC')
-                        ->get();
+            ->where('order_id', $order_id)
+            ->orderBy('id', 'DESC')
+            ->get();
 
         // show data (only for debugging)
         return view('orders.invoice-order', [
