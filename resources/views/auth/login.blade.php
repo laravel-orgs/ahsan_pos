@@ -9,7 +9,7 @@
                     <div class="col-lg-7 align-self-center">
                         <div class="p-3">
 
-                            <h2 class="mb-2">Log In</h2>
+                            <h2 class="mb-2">Log Ins</h2>
                             <p>Login to stay connected.</p>
 
                             <form action="{{ route('login') }}" method="POST">
